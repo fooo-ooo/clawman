@@ -10,24 +10,24 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const cards = [
-  { title: t('problem.card1.title'), desc: t('problem.card1.desc') },
-  { title: t('problem.card2.title'), desc: t('problem.card2.desc') },
-  { title: t('problem.card3.title'), desc: t('problem.card3.desc') },
+  { title: t('problem.card1.title'), desc: t('problem.card1.desc'), bg: 'bg-[--color-notion-red]' },
+  { title: t('problem.card2.title'), desc: t('problem.card2.desc'), bg: 'bg-[--color-notion-yellow]' },
+  { title: t('problem.card3.title'), desc: t('problem.card3.desc'), bg: 'bg-[--color-notion-purple]' },
 ];
 ---
 
-<section id="problem" class="py-20 sm:py-28">
-  <div class="mx-auto max-w-3xl px-6">
-    <p class="text-sm font-medium uppercase tracking-wider text-[--color-notion-secondary]">{t('problem.label')}</p>
-    <h2 class="mt-3 text-2xl font-bold text-[--color-notion-text] sm:text-3xl">{t('problem.title')}</h2>
-    <div class="mt-10 space-y-6">
+<section id="problem" class="px-6 py-20 sm:py-28">
+  <div class="mx-auto max-w-5xl">
+    <p class="text-sm font-medium uppercase tracking-widest text-[--color-notion-secondary]">{t('problem.label')}</p>
+    <h2 class="mt-4 max-w-2xl text-3xl font-bold text-[--color-notion-text] sm:text-4xl">{t('problem.title')}</h2>
+    <div class="mt-12 grid gap-5 sm:grid-cols-3">
       {cards.map((card) => (
-        <div class="rounded-lg border border-[--color-notion-border] p-6">
-          <h3 class="font-semibold text-[--color-notion-text]">{card.title}</h3>
-          <p class="mt-2 text-[--color-notion-secondary] leading-relaxed">{card.desc}</p>
+        <div class={`rounded-2xl ${card.bg} p-7`}>
+          <h3 class="text-lg font-semibold text-[--color-notion-text]">{card.title}</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-[--color-notion-text]/70">{card.desc}</p>
         </div>
       ))}
     </div>
-    <p class="mt-8 text-lg font-semibold text-[--color-notion-text]">{t('problem.punch')}</p>
+    <p class="mt-10 text-lg font-semibold text-[--color-notion-text]">{t('problem.punch')}</p>
   </div>
 </section>

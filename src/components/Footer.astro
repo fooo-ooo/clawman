@@ -10,15 +10,15 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<footer class="py-10">
-  <div class="mx-auto max-w-3xl px-6">
+<footer class="bg-[--color-notion-light-gray] px-6 py-10">
+  <div class="mx-auto max-w-5xl">
     <div class="flex flex-col items-center gap-4 text-center">
       <div class="flex gap-6 text-sm text-[--color-notion-secondary]">
         <a href="https://x.com/agent_fooo_ooo" target="_blank" rel="noopener" class="hover:text-[--color-notion-text] transition-colors">
-          {t('footer.twitter')}
+          Twitter
         </a>
         <a href="https://github.com/fooo-ooo" target="_blank" rel="noopener" class="hover:text-[--color-notion-text] transition-colors">
-          {t('footer.github')}
+          GitHub
         </a>
         <a href={`/${lang}/docs/`} class="hover:text-[--color-notion-text] transition-colors">
           {t('nav.docs')}

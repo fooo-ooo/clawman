@@ -11,8 +11,8 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<header class="sticky top-0 z-50 border-b border-[--color-notion-border] bg-white/95 backdrop-blur-sm">
-  <nav class="mx-auto flex max-w-3xl items-center justify-between px-6 py-3">
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
     <a href={`/${lang}/`} class="text-base font-semibold text-[--color-notion-text]">
       {t('nav.home')}
     </a>
@@ -23,7 +23,7 @@ const t = useTranslations(lang);
       <LangSwitch lang={lang} />
       <a
         href="#pricing"
-        class="rounded-lg bg-[--color-notion-text] px-4 py-1.5 text-sm font-medium text-white hover:opacity-90 transition-opacity"
+        class="rounded-full bg-black px-5 py-1.5 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
       >
         {t('nav.getStarted')}
       </a>

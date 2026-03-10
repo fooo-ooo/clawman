@@ -2,20 +2,23 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  /* Notion-like neutral palette */
+  /* Notion classic palette */
   --color-notion-text: #37352f;
-  --color-notion-secondary: #787774;
-  --color-notion-light: #f7f6f3;
+  --color-notion-secondary: #9b9a97;
+  --color-notion-light-gray: #f7f6f3;
   --color-notion-border: #e3e2de;
-  --color-notion-hover: #efefef;
 
-  /* Accent — warm orange-red (Notion style) */
-  --color-accent-50: #fff7ed;
-  --color-accent-100: #ffedd5;
-  --color-accent-200: #fed7aa;
-  --color-accent-500: #f97316;
-  --color-accent-600: #ea580c;
-  --color-accent-700: #c2410c;
+  /* Notion accent cards */
+  --color-notion-teal: #daf5f0;
+  --color-notion-red: #fdebec;
+  --color-notion-blue: #e0ecfd;
+  --color-notion-yellow: #fbf3d5;
+  --color-notion-purple: #eae4f2;
+  --color-notion-orange: #faebdd;
+
+  /* Notion button */
+  --color-notion-btn: #000000;
+  --color-notion-btn-secondary: #f7f6f3;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -32,9 +35,10 @@ body {
 
 .prose {
   --tw-prose-body: var(--color-notion-text);
-  --tw-prose-links: var(--color-accent-600);
+  --tw-prose-headings: var(--color-notion-text);
+  --tw-prose-links: #2eaadc;
 }
 
 .prose a:hover {
-  color: var(--color-accent-700);
+  text-decoration: underline;
 }

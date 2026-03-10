@@ -10,21 +10,21 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section class="py-20 sm:py-28">
-  <div class="mx-auto max-w-3xl px-6 text-center">
-    <h2 class="text-2xl font-bold text-[--color-notion-text] sm:text-3xl">{t('cta.title')}</h2>
+<section class="px-6 py-20 sm:py-28">
+  <div class="mx-auto max-w-3xl text-center">
+    <h2 class="text-3xl font-bold text-[--color-notion-text] sm:text-4xl">{t('cta.title')}</h2>
     <a
       href="https://x.com/messages/compose?recipient_id=1234567890"
       target="_blank"
       rel="noopener"
-      class="mt-8 inline-block rounded-lg bg-[--color-notion-text] px-10 py-3 text-base font-medium text-white hover:opacity-90 transition-opacity"
+      class="mt-8 inline-block rounded-full bg-black px-8 py-3 text-base font-medium text-white hover:bg-gray-800 transition-colors"
     >
-      {t('cta.button')}
+      {t('cta.button')} &rarr;
     </a>
     <p class="mt-6 text-sm text-[--color-notion-secondary]">{t('cta.contact')}</p>
     <div class="mt-2 text-sm text-[--color-notion-secondary]">
-      <a href="https://x.com/agent_fooo_ooo" target="_blank" rel="noopener" class="hover:text-[--color-notion-text] transition-colors">
-        Twitter: @agent_fooo_ooo
+      <a href="https://x.com/agent_fooo_ooo" target="_blank" rel="noopener" class="underline hover:text-[--color-notion-text] transition-colors">
+        @agent_fooo_ooo
       </a>
     </div>
   </div>

@@ -10,26 +10,26 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const steps = [
-  { num: '1', title: t('how.step1.title'), desc: t('how.step1.desc') },
-  { num: '2', title: t('how.step2.title'), desc: t('how.step2.desc') },
-  { num: '3', title: t('how.step3.title'), desc: t('how.step3.desc') },
+  { num: '1', title: t('how.step1.title'), desc: t('how.step1.desc'), bg: 'bg-[--color-notion-teal]' },
+  { num: '2', title: t('how.step2.title'), desc: t('how.step2.desc'), bg: 'bg-[--color-notion-blue]' },
+  { num: '3', title: t('how.step3.title'), desc: t('how.step3.desc'), bg: 'bg-[--color-notion-yellow]' },
 ];
 ---
 
-<section id="how" class="py-20 sm:py-28">
-  <div class="mx-auto max-w-3xl px-6">
-    <p class="text-sm font-medium uppercase tracking-wider text-[--color-notion-secondary]">{t('how.label')}</p>
-    <h2 class="mt-3 text-2xl font-bold text-[--color-notion-text] sm:text-3xl">{t('how.title')}</h2>
-    <div class="mt-10 space-y-8">
+<section id="how" class="bg-[--color-notion-light-gray] px-6 py-20 sm:py-28">
+  <div class="mx-auto max-w-5xl">
+    <div class="text-center">
+      <p class="text-sm font-medium uppercase tracking-widest text-[--color-notion-secondary]">{t('how.label')}</p>
+      <h2 class="mt-4 text-3xl font-bold text-[--color-notion-text] sm:text-4xl">{t('how.title')}</h2>
+    </div>
+    <div class="mt-14 grid gap-5 sm:grid-cols-3">
       {steps.map((step) => (
-        <div class="flex gap-5">
-          <div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[--color-notion-light] text-sm font-semibold text-[--color-notion-text]">
+        <div class={`rounded-2xl ${step.bg} p-7`}>
+          <div class="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/60 text-sm font-bold text-[--color-notion-text]">
             {step.num}
           </div>
-          <div>
-            <h3 class="font-semibold text-[--color-notion-text]">{step.title}</h3>
-            <p class="mt-1 text-[--color-notion-secondary] leading-relaxed">{step.desc}</p>
-          </div>
+          <h3 class="text-lg font-semibold text-[--color-notion-text]">{step.title}</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-[--color-notion-text]/70">{step.desc}</p>
         </div>
       ))}
     </div>

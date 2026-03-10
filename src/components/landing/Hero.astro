@@ -10,28 +10,28 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section class="py-24 sm:py-32">
-  <div class="mx-auto max-w-3xl px-6 text-center">
-    <h1 class="text-4xl font-bold tracking-tight text-[--color-notion-text] sm:text-5xl lg:text-6xl">
+<section class="px-6 pb-20 pt-24 sm:pb-28 sm:pt-32">
+  <div class="mx-auto max-w-3xl text-center">
+    <h1 class="text-5xl font-bold leading-tight tracking-tight text-[--color-notion-text] sm:text-6xl">
       {t('hero.title')}
     </h1>
-    <p class="mx-auto mt-6 max-w-2xl text-lg text-[--color-notion-secondary] sm:text-xl leading-relaxed">
+    <p class="mx-auto mt-6 max-w-xl text-xl leading-relaxed text-[--color-notion-secondary]">
       {t('hero.subtitle')}
     </p>
-    <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+    <div class="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
       <a
         href="#pricing"
-        class="rounded-lg bg-[--color-notion-text] px-8 py-3 text-base font-medium text-white hover:opacity-90 transition-opacity"
+        class="rounded-full bg-black px-7 py-3 text-base font-medium text-white hover:bg-gray-800 transition-colors"
       >
-        {t('hero.cta')}
+        {t('hero.cta')} &rarr;
       </a>
       <a
         href={`/${lang}/docs/`}
-        class="rounded-lg border border-[--color-notion-border] px-8 py-3 text-base font-medium text-[--color-notion-text] hover:bg-[--color-notion-hover] transition-colors"
+        class="rounded-full bg-[--color-notion-light-gray] px-7 py-3 text-base font-medium text-[--color-notion-text] hover:bg-[--color-notion-border] transition-colors"
       >
         {t('tech.cta')}
       </a>
     </div>
-    <p class="mt-4 text-sm text-[--color-notion-secondary]">{t('hero.note')}</p>
+    <p class="mt-5 text-sm text-[--color-notion-secondary]">{t('hero.note')}</p>
   </div>
 </section>
