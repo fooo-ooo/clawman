@@ -1,0 +1,61 @@
+---
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const faqs = lang === 'en'
+  ? [
+      { q: 'What kind of agents can you build?', a: 'Customer support bots, content creators, data processors, social media managers, internal workflow automators — any task that can be defined as a repeatable process.' },
+      { q: 'What happens when an agent makes a mistake?', a: 'Every agent has human oversight built in. We monitor outputs, catch errors, and course-correct. Critical decisions always go through human review.' },
+      { q: 'What is OpenClaw?', a: 'OpenClaw is our open-source agent framework. It provides the runtime, memory, skills, and communication channels that power every agent we build.' },
+      { q: 'Do I need technical knowledge?', a: 'No. You describe what you need in plain language. We handle all the technical implementation.' },
+      { q: 'Can I cancel anytime?', a: 'Yes. No contracts, no lock-in. Your agent configurations and data are yours to keep.' },
+      { q: 'How long does it take to build an agent?', a: 'Most agents are ready within 1-2 weeks, depending on complexity. Simple automations can be live in days.' },
+    ]
+  : [
+      { q: '你们能构建什么样的 Agent？', a: '客服机器人、内容创作、数据处理、社媒管理、内部流程自动化——任何可以定义为可重复流程的任务。' },
+      { q: 'Agent 出错怎么办？', a: '每个 Agent 都内置人类监督机制。我们监控输出、捕获错误并及时纠正。关键决策始终经过人工审核。' },
+      { q: '什么是 OpenClaw？', a: 'OpenClaw 是我们的开源 Agent 框架，提供运行时、记忆系统、技能和通信通道，是每个 Agent 的技术基座。' },
+      { q: '我需要技术背景吗？', a: '不需要。你用日常语言描述需求，技术实现全部由我们完成。' },
+      { q: '可以随时取消吗？', a: '可以。无合约、无锁定。你的 Agent 配置和数据归你所有。' },
+      { q: '构建一个 Agent 需要多久？', a: '大多数 Agent 在 1-2 周内完成，取决于复杂度。简单自动化几天内即可上线。' },
+    ];
+
+const site = Astro.site?.origin || 'https://clawman.fooo.ooo';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
+};
+---
+
+<section id="faq" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-3xl px-6">
+    <p class="text-sm font-semibold uppercase tracking-wider text-lobster-600 text-center">{t('faq.label')}</p>
+    <h2 class="mt-3 text-3xl font-bold text-ocean-900 text-center sm:text-4xl">{t('faq.title')}</h2>
+    <div class="mt-12 space-y-4">
+      {faqs.map((faq) => (
+        <details class="group rounded-2xl border border-gray-100 bg-white">
+          <summary class="flex cursor-pointer items-center justify-between p-6 font-semibold text-ocean-900 [&::-webkit-details-marker]:hidden">
+            {faq.q}
+            <svg class="h-5 w-5 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600 leading-relaxed">{faq.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

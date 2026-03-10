@@ -1,0 +1,61 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import SearchWidget from '../components/SearchWidget.astro';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+  category: string;
+  lastUpdated: string;
+  headings: Heading[];
+  relatedArticles?: { title: string; href: string }[];
+  jsonLd?: Record<string, any>;
+}
+
+const { title, description, lang, category, lastUpdated, headings, relatedArticles = [], jsonLd } = Astro.props;
+const t = useTranslations(lang);
+
+const breadcrumbs = [
+  { label: t('nav.home'), href: `/${lang}/` },
+  { label: t('nav.docs'), href: `/${lang}/docs/` },
+  { label: category, href: `/${lang}/docs/` },
+  { label: title },
+];
+---
+
+<BaseLayout title={`${title} - Clawman Docs`} description={description} lang={lang} type="article" jsonLd={jsonLd}>
+  <Header lang={lang} />
+  <div class="mx-auto max-w-7xl px-6 py-8">
+    <div class="grid grid-cols-1 gap-10 xl:grid-cols-[1fr_220px]">
+      <article>
+        <Breadcrumb items={breadcrumbs} />
+        <div class="prose prose-lg max-w-none">
+          <h1>{title}</h1>
+          <slot />
+        </div>
+        <div class="mt-6 text-sm text-gray-400">
+          {t('docs.lastUpdated')}: {lastUpdated}
+        </div>
+        {relatedArticles.length > 0 && (
+          <RelatedArticles articles={relatedArticles} lang={lang} />
+        )}
+      </article>
+      <TableOfContents headings={headings} lang={lang} />
+    </div>
+  </div>
+  <Footer lang={lang} />
+</BaseLayout>

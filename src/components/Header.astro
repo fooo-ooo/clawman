@@ -1,0 +1,33 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations, getAlternateLang, getLocalizedPath } from '../i18n/utils';
+import LangSwitch from './LangSwitch.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-lg">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href={`/${lang}/`} class="text-xl font-bold text-lobster-600 hover:text-lobster-700 transition-colors">
+      {t('nav.home')}
+    </a>
+    <div class="flex items-center gap-6">
+      <a href={`/${lang}/docs/`} class="text-sm font-medium text-ocean-700 hover:text-lobster-600 transition-colors">
+        {t('nav.docs')}
+      </a>
+      <LangSwitch lang={lang} />
+      <a
+        href="#pricing"
+        class="rounded-lg bg-lobster-600 px-4 py-2 text-sm font-semibold text-white hover:bg-lobster-700 transition-colors"
+      >
+        {t('nav.getStarted')}
+      </a>
+    </div>
+  </nav>
+</header>

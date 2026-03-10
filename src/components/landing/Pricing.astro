@@ -1,0 +1,58 @@
+---
+import type { Lang } from '../../i18n/ui';
+import { useTranslations } from '../../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const items = [
+  t('pricing.item1'),
+  t('pricing.item2'),
+  t('pricing.item3'),
+  t('pricing.item4'),
+  t('pricing.item5'),
+  t('pricing.item6'),
+  t('pricing.item7'),
+];
+---
+
+<section id="pricing" class="py-20 sm:py-28 bg-gray-50">
+  <div class="mx-auto max-w-lg px-6 text-center">
+    <p class="text-sm font-semibold uppercase tracking-wider text-lobster-600">{t('pricing.label')}</p>
+    <h2 class="mt-3 text-3xl font-bold text-ocean-900 sm:text-4xl">{t('pricing.title')}</h2>
+    <div class="mt-12 rounded-3xl border-2 border-lobster-100 bg-white p-10 shadow-xl shadow-lobster-100/20">
+      <div class="inline-block rounded-full bg-lobster-100 px-4 py-1 text-sm font-semibold text-lobster-700">
+        {t('pricing.badge')}
+      </div>
+      <div class="mt-4">
+        <span class="text-lg text-gray-400 line-through">{t('pricing.original')}</span>
+      </div>
+      <div class="mt-2">
+        <span class="text-5xl font-extrabold text-ocean-900">{t('pricing.price')}</span>
+        <span class="text-xl text-gray-500">{t('pricing.period')}</span>
+      </div>
+      <ul class="mt-8 space-y-3 text-left">
+        {items.map((item) => (
+          <li class="flex items-start gap-3">
+            <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-lobster-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-gray-700">{item}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href="https://x.com/messages/compose?recipient_id=1234567890"
+        target="_blank"
+        rel="noopener"
+        class="mt-8 block rounded-xl bg-lobster-600 px-8 py-3.5 text-center text-lg font-semibold text-white shadow-lg shadow-lobster-600/25 hover:bg-lobster-500 transition-all"
+      >
+        {t('pricing.cta')}
+      </a>
+    </div>
+  </div>
+</section>

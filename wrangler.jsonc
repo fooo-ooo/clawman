@@ -1,0 +1,14 @@
+{
+  "name": "clawman",
+  "account_id": "3fb3821f44c47c7e74af9b5ef6868ed6",
+  "compatibility_date": "2026-03-10",
+  "assets": {
+    "directory": "./dist"
+  },
+  "routes": [
+    {
+      "pattern": "clawman.fooo.ooo",
+      "custom_domain": true
+    }
+  ]
+}

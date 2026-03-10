@@ -1,0 +1,25 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import type { Lang } from '../i18n/ui';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, any>;
+}
+
+const { title, description, lang, type, jsonLd } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <SEOHead title={title} description={description} lang={lang} type={type} jsonLd={jsonLd} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

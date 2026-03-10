@@ -1,0 +1,41 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import Hero from '../../components/landing/Hero.astro';
+import Problem from '../../components/landing/Problem.astro';
+import Service from '../../components/landing/Service.astro';
+import HowItWorks from '../../components/landing/HowItWorks.astro';
+import Technology from '../../components/landing/Technology.astro';
+import Pricing from '../../components/landing/Pricing.astro';
+import FAQ from '../../components/landing/FAQ.astro';
+import CTA from '../../components/landing/CTA.astro';
+
+const lang = 'en';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Clawman',
+  url: 'https://clawman.fooo.ooo',
+  description: 'AI agent development and subscription service for businesses',
+  sameAs: [
+    'https://x.com/agent_fooo_ooo',
+    'https://github.com/fooo-ooo',
+  ],
+};
+---
+
+<LandingLayout
+  title="Clawman — Your First Agent Employee"
+  description="We build, deploy, and manage AI agents that work 24/7 for your business. Custom agent development and subscription hosting built on OpenClaw."
+  lang={lang}
+  jsonLd={jsonLd}
+>
+  <Hero lang={lang} />
+  <Problem lang={lang} />
+  <Service lang={lang} />
+  <HowItWorks lang={lang} />
+  <Technology lang={lang} />
+  <Pricing lang={lang} />
+  <FAQ lang={lang} />
+  <CTA lang={lang} />
+</LandingLayout>

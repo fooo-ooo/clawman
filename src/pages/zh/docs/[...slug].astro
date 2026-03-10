@@ -1,0 +1,53 @@
+---
+import { getCollection, render } from 'astro:content';
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  const zhDocs = docs.filter((doc) => doc.data.lang === 'zh');
+  return zhDocs.map((doc) => ({
+    params: { slug: doc.id.replace('zh/', '') },
+    props: { doc },
+  }));
+}
+
+const { doc } = Astro.props;
+const { Content, headings } = await render(doc);
+
+const allDocs = await getCollection('docs');
+const relatedArticles = (doc.data.relatedDocs || [])
+  .map((id: string) => {
+    const related = allDocs.find((d) => d.id === `zh/${id}`);
+    if (!related) return null;
+    return { title: related.data.title, href: `/zh/docs/${id}` };
+  })
+  .filter(Boolean) as { title: string; href: string }[];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: doc.data.title,
+  description: doc.data.description,
+  dateModified: doc.data.lastUpdated,
+  ...(doc.data.faq?.length ? {
+    mainEntity: doc.data.faq.map((f: {q: string; a: string}) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  } : {}),
+};
+---
+
+<DocsLayout
+  title={doc.data.title}
+  description={doc.data.description}
+  lang="zh"
+  category={doc.data.category}
+  lastUpdated={doc.data.lastUpdated}
+  headings={headings}
+  relatedArticles={relatedArticles}
+  jsonLd={jsonLd}
+>
+  <Content />
+</DocsLayout>

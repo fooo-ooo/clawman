@@ -1,0 +1,41 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+import Hero from '../../components/landing/Hero.astro';
+import Problem from '../../components/landing/Problem.astro';
+import Service from '../../components/landing/Service.astro';
+import HowItWorks from '../../components/landing/HowItWorks.astro';
+import Technology from '../../components/landing/Technology.astro';
+import Pricing from '../../components/landing/Pricing.astro';
+import FAQ from '../../components/landing/FAQ.astro';
+import CTA from '../../components/landing/CTA.astro';
+
+const lang = 'zh';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: '龙虾超人',
+  url: 'https://clawman.fooo.ooo',
+  description: '为企业提供 AI Agent 开发和订阅服务',
+  sameAs: [
+    'https://x.com/agent_fooo_ooo',
+    'https://github.com/fooo-ooo',
+  ],
+};
+---
+
+<LandingLayout
+  title="龙虾超人 — 你的第一个 Agent 员工"
+  description="我们为企业构建、部署和管理 7×24 小时运行的 AI Agent。定制 Agent 开发和订阅托管服务，基于 OpenClaw 构建。"
+  lang={lang}
+  jsonLd={jsonLd}
+>
+  <Hero lang={lang} />
+  <Problem lang={lang} />
+  <Service lang={lang} />
+  <HowItWorks lang={lang} />
+  <Technology lang={lang} />
+  <Pricing lang={lang} />
+  <FAQ lang={lang} />
+  <CTA lang={lang} />
+</LandingLayout>
