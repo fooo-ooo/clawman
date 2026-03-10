@@ -11,12 +11,12 @@ const altLang = getAlternateLang(lang);
 const altPath = getLocalizedPath(Astro.url.pathname, altLang);
 ---
 
-<div class="flex items-center gap-1 text-sm">
-  <span class={lang === 'en' ? 'font-semibold text-lobster-600' : 'text-gray-400'}>EN</span>
-  <span class="text-gray-300">/</span>
+<div class="flex items-center gap-1 text-sm text-[--color-notion-secondary]">
+  <span class={lang === 'en' ? 'font-medium text-[--color-notion-text]' : ''}>EN</span>
+  <span>/</span>
   <a
     href={altPath}
-    class={lang === 'zh' ? 'font-semibold text-lobster-600' : 'text-gray-400 hover:text-lobster-600 transition-colors'}
+    class={lang === 'zh' ? 'font-medium text-[--color-notion-text]' : 'hover:text-[--color-notion-text] transition-colors'}
   >
     中
   </a>

@@ -17,16 +17,16 @@ const t = useTranslations(lang);
 ---
 
 {articles.length > 0 && (
-  <section class="mt-12 border-t border-gray-100 pt-8">
-    <h3 class="mb-4 text-lg font-semibold text-ocean-900">{t('docs.related')}</h3>
+  <section class="mt-12 border-t border-[--color-notion-border] pt-8">
+    <h3 class="mb-4 text-lg font-semibold text-[--color-notion-text]">{t('docs.related')}</h3>
     <ul class="grid gap-3 sm:grid-cols-2">
       {articles.map((article) => (
         <li>
           <a
             href={article.href}
-            class="block rounded-lg border border-gray-100 p-4 hover:border-lobster-200 hover:bg-lobster-50 transition-colors"
+            class="block rounded-lg border border-[--color-notion-border] p-4 hover:bg-[--color-notion-light] transition-colors"
           >
-            <span class="text-sm font-medium text-ocean-900">{article.title}</span>
+            <span class="text-sm font-medium text-[--color-notion-text]">{article.title}</span>
           </a>
         </li>
       ))}

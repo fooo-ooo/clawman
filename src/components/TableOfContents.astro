@@ -21,13 +21,13 @@ const filteredHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 {filteredHeadings.length > 0 && (
   <aside class="hidden xl:block">
     <div class="sticky top-24">
-      <h3 class="mb-3 text-sm font-semibold text-ocean-900">{t('docs.toc')}</h3>
+      <h3 class="mb-3 text-sm font-semibold text-[--color-notion-text]">{t('docs.toc')}</h3>
       <ul class="space-y-2 text-sm">
         {filteredHeadings.map((heading) => (
           <li class={heading.depth === 3 ? 'pl-4' : ''}>
             <a
               href={`#${heading.slug}`}
-              class="text-gray-500 hover:text-lobster-600 transition-colors"
+              class="text-[--color-notion-secondary] hover:text-[--color-notion-text] transition-colors"
             >
               {heading.text}
             </a>

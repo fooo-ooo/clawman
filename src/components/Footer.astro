@@ -10,22 +10,21 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<footer class="border-t border-gray-100 bg-ocean-900 py-12 text-white">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="flex flex-col items-center gap-6 text-center">
-      <div class="text-2xl font-bold text-lobster-400">{t('nav.home')}</div>
-      <div class="flex gap-6 text-sm text-gray-400">
-        <a href="https://x.com/agent_fooo_ooo" target="_blank" rel="noopener" class="hover:text-white transition-colors">
+<footer class="border-t border-[--color-notion-border] py-10">
+  <div class="mx-auto max-w-3xl px-6">
+    <div class="flex flex-col items-center gap-4 text-center">
+      <div class="flex gap-6 text-sm text-[--color-notion-secondary]">
+        <a href="https://x.com/agent_fooo_ooo" target="_blank" rel="noopener" class="hover:text-[--color-notion-text] transition-colors">
           {t('footer.twitter')}
         </a>
-        <a href="https://github.com/fooo-ooo" target="_blank" rel="noopener" class="hover:text-white transition-colors">
+        <a href="https://github.com/fooo-ooo" target="_blank" rel="noopener" class="hover:text-[--color-notion-text] transition-colors">
           {t('footer.github')}
         </a>
-        <a href={`/${lang}/docs/`} class="hover:text-white transition-colors">
+        <a href={`/${lang}/docs/`} class="hover:text-[--color-notion-text] transition-colors">
           {t('nav.docs')}
         </a>
       </div>
-      <p class="text-sm text-gray-500">{t('footer.copy')}</p>
+      <p class="text-xs text-[--color-notion-secondary]">{t('footer.copy')}</p>
     </div>
   </div>
 </footer>
